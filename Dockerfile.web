@@ -1,0 +1,12 @@
+# Dockerfile.web
+FROM python:3.9
+
+WORKDIR /app
+
+RUN pip install flask py2neo python-decouple pymongo markdown
+
+COPY . .
+
+EXPOSE 80
+
+CMD ["python", "app.py"]  # Replace with the actual entry point of your web application

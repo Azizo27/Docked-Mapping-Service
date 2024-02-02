@@ -1,0 +1,10 @@
+FROM neo4j
+
+COPY ./volumes/equipe27_neo4j-data.tar.zst /tmp/
+
+RUN apt-get update && \
+    apt-get install -y zstd && \
+    tar -I zstd -xf /tmp/equipe27_neo4j-data.tar.zst -C /data/ && \
+    chown -R neo4j:neo4j /data/
+
+CMD ["neo4j"]
